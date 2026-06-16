@@ -71,7 +71,7 @@ public class MazePanel extends JPanel {
 
         while (!queue.isEmpty()) {
             Point curr = queue.poll();
-            if (curr.distance(end) < 2.0) {
+            if (curr.x == end.x && curr.y == end.y) {
                 return reconstructPath(parent, start, curr);
             }
 
@@ -109,16 +109,14 @@ public class MazePanel extends JPanel {
         }
 
         this.timer = new Timer(this.animationDelay, e -> {
-            // שינוי: הוספת סימן שווה כדי לאפשר ל-currentStep להגיע ל-size
             if (this.currentStep <= this.solutionPath.size()) {
-//                repaint(); // קודם מציירים
-                currentStep++; // אחר כך מגדילים
+                currentStep++;
                 repaint();
             } else {
                 ((Timer)e.getSource()).stop();
-                repaint();
                 this.isSolving = false;
             }
+            repaint();
         });
         this.timer.start();
     }
@@ -147,4 +145,5 @@ public class MazePanel extends JPanel {
     public boolean isSolving() {
         return isSolving;
     }
+    public boolean[][] getMazeGrid() { return mazeGrid; }
 }

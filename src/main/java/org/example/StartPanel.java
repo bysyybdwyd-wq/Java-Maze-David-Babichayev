@@ -68,12 +68,11 @@ public class StartPanel extends JPanel {
             getMaze(widthField, heightField); // מוריד ל-tempMazeImage
 
             if (this.tempMazeImage != null) {
-                // מכינים את הכל כאן!
+
                 BufferedImage raw = createRawImage(tempMazeImage, getWallColor(), drawGrid);
                 BufferedImage display = (drawGrid) ? addGridToImage(raw, getGridColor()) : raw;
                 this.cellSize= Math.max(1, tempMazeImage.getWidth() / this.mazeWidth);
 
-                // מעדכנים את ה-Main עם התמונות שכבר מוכנות
                 Main.changePanel(raw, display);
             }
         });

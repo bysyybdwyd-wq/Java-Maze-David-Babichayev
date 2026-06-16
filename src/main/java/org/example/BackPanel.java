@@ -35,11 +35,20 @@ public class BackPanel extends JPanel {
                 int cols = mazePanel.getMazeGridCols();
                 Point end = new Point(cols - 1, rows - 1);
 
+                if (!mazePanel.getMazeGrid()[end.y][end.x]) {
+                    for (int i = cols - 1; i >= 0; i--) {
+                        if (mazePanel.getMazeGrid()[rows - 1][i]) {
+                            end = new Point(i, rows - 1);
+                            break;
+                        }
+                    }
+                }
 
-                // 2. קריאה לאלגוריתם BFS
+
+                //  קריאה לאלגוריתם BFS
                 List<Point> path = mazePanel.solveBFS(start, end);
 
-                // 3. בדיקה אם נמצא פתרון והפעלת האנימציה
+                //  בדיקה אם נמצא פתרון והפעלת האנימציה
                 if (path != null && !((java.util.List<?>) path).isEmpty()) {
                     System.out.println("Path found! Starting animation...");
                     mazePanel.startAnimation(path);
