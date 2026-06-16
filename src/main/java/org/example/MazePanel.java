@@ -116,6 +116,7 @@ public class MazePanel extends JPanel {
                 repaint();
             } else {
                 ((Timer)e.getSource()).stop();
+                repaint();
                 this.isSolving = false;
             }
         });
