@@ -46,7 +46,7 @@ public class MazePanel extends JPanel {
 
 
                 int brightness = (pixelColor.getRed() + pixelColor.getGreen() + pixelColor.getBlue()) / 3;
-                grid[i][j] = (brightness > 200); // כל מה שבהיר מ-200 הוא דרך
+                grid[i][j] = (brightness > 240);
             }
         }
         return grid;
