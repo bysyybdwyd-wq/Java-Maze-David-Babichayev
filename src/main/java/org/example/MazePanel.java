@@ -35,7 +35,7 @@ public class MazePanel extends JPanel {
     }
 
     // 1. הפיכת תמונה למטריצה של True/False
-    private boolean[][] createGridFromImage(BufferedImage img) {
+    public boolean[][] createGridFromImage(BufferedImage img) {
         int rows = img.getHeight() / this.cellSize;
         int cols = img.getWidth() / this.cellSize;
         boolean[][] grid = new boolean[rows][cols];
@@ -87,7 +87,7 @@ public class MazePanel extends JPanel {
         return new ArrayList<>();
     }
 
-    private List<Point> reconstructPath(Point[][] parent, Point start, Point end) {
+    public List<Point> reconstructPath(Point[][] parent, Point start, Point end) {
         List<Point> path = new ArrayList<>();
         Point curr = end;
         while (curr != null) {
